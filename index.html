@@ -1,1 +1,209 @@
 
+<!doctype html>
+<html ng-app="AngularModule">
+	<head>
+		<title> My Task </title>
+
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" />
+	    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.material.min.css" />
+	    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.min.css" />
+	    <link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.material.min.css" />	
+	    <link rel="stylesheet" href="../css/style.css" />
+	    <link rel="stylesheet" href="../css/gridStyle.css" />
+
+	</head>
+	<body ng-controller="SummaryController" ng-init="init()">
+		<div class="main-container" id="mytask-inbox">
+			<h3 class="page-title">My Task : Inbox</h3>
+			
+			<div class="content-container">
+				<div class="status-blocks-cont">
+					<div class="sd-block mytask active">
+						<div class="sd-block-content">
+							<span class="sbc-val">200</span>
+							<span class="sbc-type">My Task</span>
+						</div>
+						<div class="sd-block-icon">
+							<i class="fa fa-user"></i>
+						</div>
+					</div>
+					<div class="sd-block complete">
+						<div class="sd-block-content">
+							<span class="sbc-val">30</span>
+							<span class="sbc-type">Complete</span>
+						</div>
+						<div class="sd-block-icon">
+							<i class="fa fa-check"></i>
+						</div>
+					</div>
+					<div class="sd-block summary">
+						<div class="sd-block-content">
+							<span class="sbc-val">50</span>
+							<span class="sbc-type">Summary</span>
+						</div>
+						<div class="sd-block-icon">
+							<i class="fa fa-clock-o"></i>
+						</div>
+					</div>
+				</div>
+				<!-- toggleClasses: summary / mytask below to mytask-grid -->
+				
+				<div id="mytask-grid" class="mytask"> 
+					<div class="header-filter">
+						<div class="filter-by">
+							<select name="select-type" id="select-type">
+								<option>Select Type</option>
+								<option>Item Create</option>
+							</select>
+							<span class="filter-bar"></span>
+							<span>Filtered By:</span>
+							<ul>
+								<li>Item Create <i class="fa fa-caret-down"></i>
+								</li>
+								<li>Originator Name <i class="fa fa-caret-down"></i>
+								</li>
+								<li>Event <i class="fa fa-caret-down"></i>
+									<div class="item-create-dropdown">
+										<div class="list">
+											<span>Event 1</span>
+											<span>Event 2</span>
+											<span>Event 3</span>
+											<span>Event 4</span>
+										</div>
+										<div class="remove">
+											<span><i class="fa fa-times"></i></span>
+											<span>Remove</span>
+										</div>
+										<div class="event-down-arrow"></div>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<div class="select-filtered">
+							<input type="checkbox" name="select-filtered" value="">
+							<span>Select Filtered</span>
+						</div>
+					</div>
+					<div class="row-two">
+						<div class="left-tab-icons">
+							<div class="tab-one active">
+								<span><i class="fa fa-user"></i></span>
+								<span class="active"></span>
+							</div>
+							<div class="tab-two">
+								<span><i class="fa fa-exclamation-triangle"></i></span>
+								<span></span>
+							</div>
+							<div class="tab-three">
+								<span><i class="fa fa-exclamation"></i></span>
+								<span></span>
+							</div>
+						</div>
+						<div ng-controller="mytaskGridCtrl" class="mytaskCont">
+							<kendo-grid options="mainGridOptions">
+								<div k-detail-template>
+					                <kendo-tabstrip>
+						                <ul class="subGridMenu">
+						                    <li class="comment-btn">Comment</li>
+						                    <li class="k-state-active">Attributes</li>
+						                </ul>
+						                <div>
+						                	<p>test</p>
+						                    <div kendo-grid k-options="detailGridOptions(dataItem)"></div>
+						                </div>
+						                <div data-uid='#: uid #'>
+						                	<ul>
+						                        <li>test</li>
+						                        <li>test1a</li>
+						                        <li>test2{{dataItem.Attributes[0].name}}</li>
+						                        <li>test3 {{dataItem}}</li>
+						                    </ul>
+							            </div>
+					                </kendo-tabstrip>
+					            </div>
+							</kendo-grid>
+						</div>
+						<div ng-controller="summaryGridCtrl" class="summaryCont">
+							<kendo-grid options="mainGridOptions">
+								<div k-detail-template>
+									<div class="progress-level-bar">
+										<div class="progress-level first done">
+											<div class="progress-icon">
+												<i class="fa fa-user"></i>
+											</div>
+											<p class="progress-desc">Supplier</p>
+										</div>
+										<div class="progress-level done">
+											<div class="progress-icon">
+												<i class="fa fa-user"></i>
+											</div>
+											<div class="progress-pipe"></div>
+											<p class="progress-desc">Buyer</p>
+										</div>
+										<div class="progress-level done now">
+											<div class="progress-icon">
+												<i class="fa fa-user"></i>
+											</div>
+											<div class="progress-pipe"></div>	
+											<p class="progress-desc">Replenishment</p>
+										</div>
+										<div class="progress-level">
+											<div class="progress-icon">
+												<i class="fa fa-user"></i>
+											</div>
+											<div class="progress-pipe"></div>
+											<p class="progress-desc">Procurement</p>
+										</div>
+					                </div>
+					                <div class="status"> <!-- addClass "complete" -->
+					                	<div class="inProgressMsg">
+					                		<p class="ipStatus">Replenishment</p>
+					                	</div>
+					                	<div class="completeMsg">
+					                		<i class="fa fa-check fa-2x"></i>
+					                		<p class="ipStatus-two">Complete</p>
+					                	</div>
+					                </div>
+					            </div>
+							</kendo-grid>
+						</div>
+					</div>
+				<div class="approval-buttons">
+					<a href="#" class="app-button approve">
+						<span class="app-text">More Details</span>
+					</a>
+					<a href="#" class="app-button error">
+						<span class="fix-text">Fix Errors</span>
+						<span><i class="fa fa-exclamation-triangle"></i></span>
+					</a>
+					<a href="#" class="app-button conflict">
+						<span class="fix-cnflct">Fix Conflicts</span>
+						<span><i class="fa fa-exclamation"></i></span>
+					</a>
+				</div>
+			</div>
+		</div>	
+		<div class="sm-overlay"></div>
+		<div class="sum-lightbox commentbox">
+			<div class="header">
+				<h2>Modify</h2>
+			</div>
+			<div class="content">
+				<p><i class="fa fa-pencil"></i> Comment</p>
+				<textarea placeholder="Please type your comment"></textarea>
+				<p class="char-len">Max 255 characters</p>
+				<div class="buttons">
+					<button class="active">Modify</button>
+					<button>Cancel</button>
+				</div>
+			</div>
+		</div>	
+		<script type="text/javascript" src="../js/libs/jquery-2.1.0.min.js"></script>
+		<script type="text/javascript" src="../js/libs/angular.js"></script>
+		<script src="http://cdn.kendostatic.com/2015.1.429/js/kendo.all.min.js"></script>
+		<script type="text/javascript" src="../js/script.js"></script>
+	</body>
+</html>
+
+
