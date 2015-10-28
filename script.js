@@ -41,7 +41,7 @@ grid.controller("mytaskGridCtrl", function($scope){
 						},
 						{ 
 							taskId: "1234",
-							Event: "Event Info Here",
+							Event: "Event1",
 							description:"Description Info Here",
 							originator: "Originator Name",
 							type: "Item Create",
@@ -116,14 +116,16 @@ grid.controller("mytaskGridCtrl", function($scope){
 		sortable: true,
 		selectable: "row",
 		scrollable: false,
+		//sortable: true,
+		columnMenuInit: onFilterMenuInit,
 		columnMenu: {
-			columns: false,
-			sortable: true
-		},
+		columns: false
+	},
 		filterable: {
 			extra: false,
-			mode: "menu"
+			//mode: "menu",			
         },
+		
 		pageable: {
 			refresh: true,
 			pageSizes: true,
@@ -338,3 +340,72 @@ $scope.mainGridOptions = {
 
 
 
+function onFilterMenuInit(e) {
+        if (e.field == "Event") {
+          initCheckboxFilter.call(this, e);
+        }
+      }
+
+      function initCheckboxFilter(e) {
+        var popup = e.container.data("kendoPopup");
+        var dataSource = this.dataSource;
+        var field = e.field;
+        var checkboxesDataSource = new kendo.data.DataSource({
+          data: uniqueForField(dataSource.data(), field)
+        });
+
+        var helpTextElement = e.container.children(":first").children(":last").find('.k-dropdown');
+        //helpTextElement.nextUntil(":has(.k-button)").remove();
+        var element = $("<div class='checkbox-ontainer'></div>").insertAfter(helpTextElement).kendoListView({
+          dataSource: checkboxesDataSource,
+          template: "<div><input type='checkbox' value='#:" + field + "#'/>#:" + field + "#</div>"
+        });
+        e.container.find("[type='submit']").click(function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var filter = dataSource.filter() || { logic: "and", filters: [] };
+          var fieldFilters = $.map(element.find(":checkbox:checked"), function (input) {            
+            return {
+              field: field,
+              operator: "eq",
+              value: input.value
+            };
+          });
+          if (fieldFilters.length) {
+            //removeFiltersForField(filter, field);
+            filter.filters.push({
+              logic: "or",
+              filters: fieldFilters
+            });
+            dataSource.filter(filter);
+          }
+          popup.close();
+        });
+      }
+
+      function removeFiltersForField(expression, field) {
+        if (expression.filters) {
+          expression.filters = $.grep(expression.filters, function (filter) {
+            removeFiltersForField(filter, field);
+            if (filter.filters) {
+              return filter.filters.length;
+            } else {
+              return filter.field != field;
+            }
+          });
+        }
+      }
+
+      function uniqueForField(data, field) {
+        var map = {};
+        var result = [];
+        var item;
+        for (var i = 0; i < data.length; i++) {
+          item = data[i];
+          if (!map[item[field]]) {
+            result.push(item.toJSON());
+            map[item[field]] = true;
+          }
+        }
+        return result;
+      }
