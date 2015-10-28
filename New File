@@ -1,0 +1,10 @@
+$('.summaryCont.ng-scope').hide();
+	$('.sd-block.complete').click(function(){
+		$('.summaryCont.ng-scope').hide();
+	});
+	$('.sd-block.summary').click(function(){
+		$('.summaryCont.ng-scope').show();
+	});
+	$('.sd-block mytask').click(function(){
+		$('.summaryCont.ng-scope').hide();
+	});
