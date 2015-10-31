@@ -364,12 +364,13 @@ function onFilterMenuInit(e) {
         var checkboxesDataSource = new kendo.data.DataSource({
           data: uniqueForField(dataSource.data(), field)
         });
-debugger
+
         var helpTextElement = e.container.children(":first").children(":last").find('.k-textbox');
 		e.container.children(":first").children(":last").find('.k-dropdown').hide();		
 		$('<span style="width: 100%;" class="k-textbox k-space-right"></span>').insertAfter(e.container.children(":first").children(":last").find('.k-filter-help-text'))		
 		e.container.children(":first").children(":last").find("span.k-space-right").append('<a class="k-icon k-i-search" href="#">&nbsp;</a>');
 		e.container.children(":first").children(":last").find("span.k-space-right").append(e.container.children(":first").children(":last").find('.k-textbox'));		
+		e.container.children(":first").children(":last").find(".k-button.k-primary").text("OK");
         //helpTextElement.nextUntil(":has(.k-button)").remove();
         var element = $("<div class='checkbox-ontainer'></div>").insertAfter(helpTextElement.parent()).kendoListView({
           dataSource: checkboxesDataSource,
