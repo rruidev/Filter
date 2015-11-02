@@ -858,3 +858,7 @@ body{
      margin: 10px;
 	 transform: scale(1.2);
 }
+.commenttxt{
+	border-right: 1px solid #ccc;
+    padding-right: 5px;
+}
