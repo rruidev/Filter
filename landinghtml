@@ -1,1 +1,90 @@
 
+<!doctype html>
+<html>
+	<head>
+		<title> My Task </title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" />
+		<link rel="stylesheet" href="../css/style.css" />
+	</head>
+	<body>
+		<div class="MenuDiv">
+			<div class="MenuListDiv">
+				<nav>
+					<ul>
+						<li><div></div><span></span></li>
+						<li><div><i class="fa fa-home"></i></div><span>Start</span></li>
+						<li><div><i class="fa fa-tachometer"></i></div><span>DashBoard</span></li>
+						<li><div><i class="fa fa-tag"></i></div><span>Creation</span></li>
+						<li><div><i class="fa fa-wrench"></i></div><span>Maintenance</span></li>
+						<li><div><i class="fa fa-database"></i></div><span>Asset Mngmt</span></li>
+						<li><div><i class="fa fa-truck"></i></div><span>Shipper Mngmt</span></li>
+						<li><div><i class="fa fa-history"></i></div><span>Item History</span></li>
+						<li><div><i class="fa fa-times-circle-o"></i></div><span>Item Integrity</span></li>
+						<li><div></div><span></span></li>					
+					</ul>
+				</nav>
+			</div>
+			<div class="ContentDiv">
+				<div class="nav">
+					<ul>
+						<li> <i class="fa fa-bars"></i></li>
+						<li>Enterprice Item</li>
+						<li><i class="fa fa-search"></i></li>
+						<li><i class="fa fa-bell"></i></li>
+						<li><i class="fa fa-exclamation-triangle"></i></li>
+						<li><i class="fa fa-cog"></i></li>
+					</ul>
+				</div>
+				<div class="btnContentMainDiv">
+				<div class="buttonDiv">
+					<div class="ButtonLook"><i class="fa fa-tag"></i><span>About Creation</span></div><br/>
+					<div class="ButtonLook"><i class="fa fa-wrench"></i><span>About Maintenance</span></div><br/>
+					<div class="ButtonLook"><i class="fa fa-database"></i><span>About Asset Management</span></div><br/>
+					<div class="ButtonLook"><i class="fa fa-truck"></i><span>About Shipper Management</span></div><br/>
+					<div class="ButtonLook"><i class="fa fa-history"></i><span>About Item History</span></div><br/>
+					<div class="ButtonLook"><i class="fa fa-times-circle-o"></i><span>About Item Integrity</span></div>				
+				</div>
+				<div class="btnContentDiv">
+					<div class="ButtonLookCont">
+						<div class="Btntitle"><i class="fa fa-tag"></i><span>Product</span></br></div>
+						<div class="BtnDesc">
+						<span>Lorem Ipsum dolor sit a met</span>
+						<span><i class="fa fa-lightbulb-o"></i></span>
+						<span><i class="fa fa-video-camera"></i></span>
+						<span><i class="fa fa-angle-right"></i></span>
+						</div>
+					</div>
+					<div class="ButtonLookCont">
+						<div class="Btntitle"><i class="fa fa-university"></i><span>Product</span></br></div>
+						<div class="BtnDesc">
+						<span>Lorem Ipsum dolor sit a met</span>
+						<span><i class="fa fa-lightbulb-o"></i></span>
+						<span><i class="fa fa-video-camera"></i></span>
+						<span><i class="fa fa-angle-right"></i></span>
+						</div>
+					</div>
+					<div class="ButtonLookCont">
+						<div class="Btntitle"><i class="fa fa-barcode"></i><span>Product</span></br></div>
+						<div class="BtnDesc">
+						<span>Lorem Ipsum dolor sit a met</span>
+						<span><i class="fa fa-lightbulb-o"></i></span>
+						<span><i class="fa fa-video-camera"></i></span>
+						<span><i class="fa fa-angle-right"></i></span>
+						</div>
+					</div>
+					<div class="ButtonLookCont">
+						<div class="Btntitle"><i class="fa fa-truck"></i><span>Product</span></br></div>
+						<div class="BtnDesc">
+						<span>Lorem Ipsum dolor sit a met</span>
+						<span><i class="fa fa-lightbulb-o"></i></span>
+						<span><i class="fa fa-video-camera"></i></span>
+						<span><i class="fa fa-angle-right"></i></span>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
