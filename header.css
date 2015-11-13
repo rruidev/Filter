@@ -1,0 +1,121 @@
+@charset "utf-8";
+/* CSS Document */
+/* header part*/
+.container-costom1 {
+	padding:0 !important;
+	height:44px;
+}
+.colorWhite {
+	color: #fff;
+}
+.noBorder {
+	border: none!important;
+}
+.height44 {
+	height: 44px !important;
+}
+.headerIconsContainer {
+	font-size: 12px;
+}
+.headerIconsContainer a i {
+	font-size: 16px !important;
+}
+.headerIconsContainer ul {
+	margin: 0px;
+	padding:0px !important;
+	height:44px;
+}
+.headerIconsContainer ul li {
+	display:inline-block;
+	border-left: solid 1px #2177c5;
+	height:44px;
+	padding: 0 10px;
+	float: left;
+}
+.lineHeight44 {
+	line-height: 44px!important;
+}
+.navbar-brand {
+	padding: 9px 0px 9px 20px;
+}
+.navbar-brand {
+	font-size: 18px;
+	line-height: 20px;
+	float: left;
+	height: 50px;
+	padding: 15px 15px;
+	color: #fff !important;
+}
+.navbar-default {
+	border-color: #003b70;
+	background-color: #004c91;
+}
+.navbar {
+	border-radius: 4px;
+	min-height:44px;
+}
+.iconSearch {
+	/*background-color: #fff;*/
+	display:inline-block;
+	padding: 0 7px;
+	height:44px;
+}
+.iconSearch i {
+	line-height: 44px;
+	color: #fff;
+}
+.bgRed {
+	background-color:#d90000;
+}
+.bgGreen{
+	background-color:#84c656;
+}
+.bgNavyblue{
+	background-color:#1A5E9C;
+	}
+.borderLftWhite{
+	border-left: 1px solid #fff;
+	}
+.marginTop15 {
+	margin-top: 15px;
+}
+.marginRight10 {
+	margin-right: 10px;
+}
+.marginTop15 {
+	margin-top: 15px !important;
+}
+.ribbon {
+	margin-left:-10px;
+	padding:3px 8px;
+	z-index: -1;
+    position: relative;
+    top: -8px;
+	font-size: 12px;
+    font-weight: BOLD;
+}
+.searchPageItem {
+	z-index:55;
+	position:relative;
+	}
+.btn{
+	background-color: #004c91;
+	border: solid 1px #0280ce;
+	color: #fff;
+	}
+/* End of header part */
+.mainbodycontner{
+	padding: 25px;
+	}
+.tp_head{
+    font-size: 25px;
+    margin-bottom: 20px;
+    color: #5FADDB;
+	}
+.tp_head span {
+    color: #000;
+}
+.tp_head i {
+    color: #000;
+    font-size: 15px;
+}
