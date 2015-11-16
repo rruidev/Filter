@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html>
 	<head>
@@ -6,10 +5,22 @@
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" />
 		<link rel="stylesheet" href="../css/style.css" />
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>		
+		<link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.min.css" />
+		<link rel="stylesheet" href="http://cdn.kendostatic.com/2015.1.429/styles/kendo.dataviz.material.min.css" />
+		<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2015.2.624/styles/kendo.common.min.css" />
+		<link rel="stylesheet" href="https://kendo.cdn.telerik.com/2015.2.624/styles/kendo.default.min.css" />
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js"></script>
+		<script src="https://kendo.cdn.telerik.com/2015.2.624/js/kendo.all.min.js"></script>
+		<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" />
+		<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		
+
 	</head>
 	<body>
+	
 		<div class="MenuDiv">
-			<div class="MenuListDiv">
+			<div class="MenuListDiv">			
 				<nav>
 					<ul>
 						<li><div></div><span></span></li>
@@ -27,14 +38,14 @@
 			</div>
 			<div class="ContentDiv">
 				<div class="nav">
-					<ul>
-						<li> <i class="fa fa-bars"></i></li>
-						<li>Enterprice Item</li>
-						<li><i class="fa fa-search"></i></li>
-						<li><i class="fa fa-bell"></i></li>
-						<li><i class="fa fa-exclamation-triangle"></i></li>
-						<li><i class="fa fa-cog"></i></li>
-					</ul>
+				<ul class="nav nav-pills">
+					<li id="MenuClick"> <i class="fa fa-bars"></i></li>
+					<li class="headertag">Enterprice Item</li>
+					<li><i class="fa fa-search"></i></li>
+					<li id=""  class="searchPageItem" > <i class="fa fa-bell colorWhite marginTop15"></i> <span class="bgGreen ribbon">20</span> </li>
+					<li id=""  class="searchPageItem" > <i class="fa fa-exclamation-triangle colorWhite marginTop15"></i> <span class="bgRed ribbon">10</span> </li>
+					<li id=""  class="searchPageItem noBorder" > <span class="lineHeight44 ">J Mooney</span> <i class="fa fa-cog"></i>		</li>			
+				</ul>					
 				</div>
 				<div class="btnContentMainDiv">
 				<div class="buttonDiv">
@@ -48,43 +59,52 @@
 				<div class="btnContentDiv">
 					<div class="ButtonLookCont">
 						<div class="Btntitle"><i class="fa fa-tag"></i><span>Product</span></br></div>
-						<div class="BtnDesc">
-						<span>Lorem Ipsum dolor sit a met</span>
-						<span><i class="fa fa-lightbulb-o"></i></span>
-						<span><i class="fa fa-video-camera"></i></span>
-						<span><i class="fa fa-angle-right"></i></span>
-						</div>
+						<ul class="BtnDesc">
+						<li class="SpninnerDesc">Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met</li>
+						<li><div  class="spnbulb"><i class="fa fa-lightbulb-o"></i></div></li>
+						<li><div class="spncamera"><i class="fa fa-video-camera"></i></div></li>
+						<li><div class="spnangle"><i class="fa fa-angle-right"></i></div></li>
+						</ul>
 					</div>
 					<div class="ButtonLookCont">
-						<div class="Btntitle"><i class="fa fa-university"></i><span>Product</span></br></div>
-						<div class="BtnDesc">
-						<span>Lorem Ipsum dolor sit a met</span>
-						<span><i class="fa fa-lightbulb-o"></i></span>
-						<span><i class="fa fa-video-camera"></i></span>
-						<span><i class="fa fa-angle-right"></i></span>
-						</div>
+						<div class="Btntitle"><i class="fa fa-university"></i><span>Offer</span></br></div>
+						<ul class="BtnDesc">
+						<li class="SpninnerDesc">Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met</li>
+						<li><div  class="spnbulb"><i class="fa fa-lightbulb-o"></i></div></li>
+						<li><div class="spncamera"><i class="fa fa-video-camera"></i></div></li>
+						<li><div class="spnangle"><i class="fa fa-angle-right"></i></div></li>
+						</ul>
 					</div>
 					<div class="ButtonLookCont">
-						<div class="Btntitle"><i class="fa fa-barcode"></i><span>Product</span></br></div>
-						<div class="BtnDesc">
-						<span>Lorem Ipsum dolor sit a met</span>
-						<span><i class="fa fa-lightbulb-o"></i></span>
-						<span><i class="fa fa-video-camera"></i></span>
-						<span><i class="fa fa-angle-right"></i></span>
-						</div>
+						<div class="Btntitle"><i class="fa fa-barcode"></i><span>Trade</span></br></div>
+						<ul class="BtnDesc">
+						<li class="SpninnerDesc">Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met</li>
+						<li><div  class="spnbulb"><i class="fa fa-lightbulb-o"></i></div></li>
+						<li><div class="spncamera"><i class="fa fa-video-camera"></i></div></li>
+						<li><div class="spnangle"><i class="fa fa-angle-right"></i></div></li>
+						</ul>
 					</div>
 					<div class="ButtonLookCont">
-						<div class="Btntitle"><i class="fa fa-truck"></i><span>Product</span></br></div>
-						<div class="BtnDesc">
-						<span>Lorem Ipsum dolor sit a met</span>
-						<span><i class="fa fa-lightbulb-o"></i></span>
-						<span><i class="fa fa-video-camera"></i></span>
-						<span><i class="fa fa-angle-right"></i></span>
-						</div>
+						<div class="Btntitle"><i class="fa fa-truck"></i><span>Supply</span></br></div>
+						<ul class="BtnDesc">
+						<li class="SpninnerDesc">Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met Lorem Ipsum dolor sit a met</li>
+						<li><div  class="spnbulb"><i class="fa fa-lightbulb-o"></i></div></li>
+						<li><div class="spncamera"><i class="fa fa-video-camera"></i></div></li>
+						<li><div class="spnangle"><i class="fa fa-angle-right"></i></div></li>
+						</ul>
 					</div>
 				</div>
 				</div>
 			</div>
 		</div>
+		<script type="text/javascript">
+			$("#MenuClick").click(function(){
+				if($(".MenuListDiv").is(':visible')){
+					$(".MenuListDiv").hide();
+				}else{
+					$(".MenuListDiv").show();
+				}
+			});
+		</script>
 	</body>
 </html>
