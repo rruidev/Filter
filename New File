@@ -8,3 +8,48 @@ $('.summaryCont.ng-scope').hide();
 	$('.sd-block mytask').click(function(){
 		$('.summaryCont.ng-scope').hide();
 	});
+.faq dt:before {
+  content: counter(my-counter);
+  counter-increment: my-counter;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font: bold 20px/1 Sans-Serif;
+  color: #fff;
+  background-color: #bfdfff;
+  width: 3%;
+  height: 40px;
+  text-align: center;
+  padding-top: 32px;
+}
+
+.faq dd {
+  padding: 0 0 23px 0;
+  font-size: 12px;
+  color: #333;
+  padding-left: 55px;
+} 
+
+.faq dd:last-child{
+  border-bottom: 1px solid #f3f3f3;
+}
+
+.editIcons{
+  float: left;
+  width: 5%;
+  margin-top: 14px;
+}
+
+.editIcons .fa{
+  width: 80%;
+  padding-top: 30px;
+  background-color: #d7ebfe;
+  text-align: center;
+  height: 36px;
+  margin-bottom: 5px;
+}
+
+#mytask-grid .k-grid .editIcons .fa.active{
+  background-color: #007dc6;
+  color: #fff;
+}
