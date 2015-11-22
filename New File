@@ -773,3 +773,18 @@ function onFilterMenuInit(e) {
         }
         return result;
       }
+      
+      #mytask-inbox .approval-buttons .app-button .fix-text {
+    border-right: 1px solid #dddddd;
+    display: inline-block;
+    padding: 8px;
+    background: red;
+    text-align: center;
+    color: #cccccc;
+    width: 71px;
+}
+
+#mytask-inbox .approval-buttons .app-button.active .fix-text{
+   border: none;
+   background: red;
+}
