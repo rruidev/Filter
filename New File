@@ -1,4 +1,561 @@
-$('.summaryCont.ng-scope').hide();
+var grid = angular.module("gridModule",["kendo.directives"]);
+angular.module("AngularModule",["gridModule","accordionApp"]);
+var accordian = angular.module("accordionApp",[]);
+
+accordian.controller("SummaryController" , function($scope){
+	$scope.init = function () {
+		$('.sd-block').click(function(){
+		   	if(! $(this).hasClass('active') ){
+		   		$('.sd-block').removeClass('active');
+		   		$(this).addClass('active');
+		   		if( $(this).hasClass('summary') ) {
+			    	$("#mytask-grid").addClass("summary");
+					$("#mytask-grid").removeClass("mytask");
+					$("#mytask-grid").removeClass("complete");
+					$(".conflicts-grid").hide();
+					$(".mytaskCont").hide();
+					$(".action-grid").hide();
+					$(".left-tab-icons").hide();
+			    }
+			    else if ($(this).hasClass('mytask') ) {
+			    	$("#mytask-grid").addClass("mytask");
+					$("#mytask-grid").removeClass("complete");
+					$("#mytask-grid").removeClass("summary");
+					$(".left-tab-icons").css("display","inline-block");
+					$(".conflicts-grid").hide();
+					$(".mytaskCont").css("display","inline-block");
+					$(".left-tab-icons").css("display","inline-block");
+					$(".action-grid").hide();
+					
+			    } else if ($(this).hasClass('complete') ) {
+					$("#mytask-grid").addClass("complete");
+					$("#mytask-grid").removeClass("mytask");
+					$("#mytask-grid").removeClass("summary");
+					$(".conflicts-grid").hide();
+					$(".mytaskCont").hide();
+					$(".action-grid").css("display","inline-block");
+					$(".left-tab-icons").hide();
+					
+				}
+		 	}
+		});
+	}
+	$scope.showInboxGrid = function(e){
+		var currentEle = e.currentTarget;
+		if(!$(currentEle).hasClass('active')){
+			$(".left-tab-icons").find(".active").removeClass("active");
+			$(currentEle).addClass('active');
+			$(".mytaskCont").css('display','inline-block');
+			$(".conflicts-grid").hide();
+		}
+	}
+	$scope.showConflictsGrid = function(e){
+		var currentEle = e.currentTarget;
+		if(!$(currentEle).hasClass('active')){
+			$(".left-tab-icons").find(".active").removeClass("active");
+			$(currentEle).addClass('active');
+			$(".mytaskCont").css('display','inline-block');
+			$(".conflicts-grid").hide();
+		}
+	}
+	$scope.showWarningsGrid = function(e){
+		var currentEle = e.currentTarget;
+		if(!$(currentEle).hasClass('active')){
+			$(".left-tab-icons").find(".active").removeClass("active");
+			$(currentEle).addClass('active');
+			$(".mytaskCont").hide();
+			$(".conflicts-grid").css('display','inline-block');
+		}
+	}
+});
+grid.controller("mytaskGridCtrl", function($scope){
+	$scope.tooltipOpt = {"a":"Approve", "m":"Modify", "r":"Reject", "position":"top"};
+	$scope.mainGridOptions = {
+		dataSource: [ 
+						{ 
+							taskId: "1234",
+							Event: "All Events",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event1",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event2",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event3",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							dateTime: "01/10/2015 8:50AM"
+						}
+					],
+		height: 180,
+		sortable: true,
+		selectable: "row",
+		scrollable: false,
+		//sortable: true,
+		columnMenuInit: onFilterMenuInit,
+		columnMenu: {
+		columns: false
+	},
+		filterable: {
+			extra: false,
+			//mode: "menu",			
+        },
+		
+		pageable: {
+			refresh: true,
+			pageSizes: true,
+			buttonCount: 2,
+			pageSize: 10,
+			info: true,
+			messages: {
+			  display: " {10}"
+			}
+		},
+		dataBound: function() {
+			this.expandRow(this.tbody.find("tr.k-master-row").first());
+		},
+		columns: [
+		{
+			title: "<input type='checkbox' name='before-taskid' value=''>",
+			template: "<div class='amr-checks'><input type='checkbox' class='scheck'> </div>",
+		},
+		{
+			field: "taskId",
+			title: "Task ID",
+			width: 200
+		}, {
+			field: "Event",
+			title: "Event"
+		}, 
+		{
+			field: "description",
+			title: "Description"
+		},
+		{
+			field: "originator",
+			title: "Originator"
+		},  
+		{
+			field: "type",
+			title: "Type"
+		}, 
+		{
+			field: "dateTime",
+			title: "Date / Time"
+		}],
+		dataBinding: function(e) {
+				var $pagerRefresh = $('.k-pager-refresh').clone();
+				var $grid = $('#mytask-grid.mytask');
+				//$('.k-pager-refresh').remove();
+				$grid.find('.k-grid-header tr th:first-child').prepend($pagerRefresh);
+
+				$grid.find('.k-pager-wrap').wrapInner('<div class="k-pager-innerwrap"></div>');
+
+				$grid.on('click','.scheck',function(){
+					if( this.checked ){
+						$(this).closest('tr').addClass('active');
+						$('.approval-buttons .approve').addClass('active');
+					} else {
+						$(this).closest('tr').removeClass('active');
+						if( $('.scheck:checked').length == 0 ) {
+							$('.approval-buttons .approve').removeClass('active');
+						}
+					}
+				})
+				
+				$grid.on('click','.comment-btn',function(){		
+					$('.commentbox,.sm-overlay').show();
+					$('.sm-overlay,.sum-lightbox .buttons button').click(function(){
+						$('.commentbox,.sm-overlay').hide()
+					})
+				});
+		}
+	};
+
+	
+});
+
+grid.controller("ActionGridCtrl", function($scope){
+$scope.mainGridOptions = {
+	dataSource: [ 
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 Action:"Action",
+				 DateTime: "01/10/2015 8:50AM"
+				},
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 Action:"Action",
+				 DateTime: "01/10/2015 8:50AM"
+				},{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 Action:"Action",
+				 DateTime: "01/10/2015 8:50AM"
+				},
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 Action:"Action",
+				 DateTime: "01/10/2015 8:50AM"
+				},{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 Action:"Action",
+				 DateTime: "01/10/2015 8:50AM"
+				},
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 Action:"Action",
+				 DateTime: "01/10/2015 8:50AM"
+				}],
+	height: 180,
+	sortable: true,
+	selectable: "row",
+	scrollable: false,
+	columnMenu: {
+		columns: false
+	},
+	filterable: {
+		extra: false
+    },
+	pageable: {
+		refresh: true,
+		pageSizes: false,
+		buttonCount: 2,
+		pageSize: 5,
+		info: true,
+		messages: {
+		  display: " {2}"
+		}
+	},
+	dataBound: function() {
+		this.expandRow(this.tbody.find("tr.k-master-row"));
+	},
+	columns: [
+	{
+		field: "taskId",
+		title: "Task ID",
+		width: 200
+	}, {
+		field: "Description",
+		title: "Description"
+	}, {
+		field: "Originator",
+		title: "Originator"
+	},  {
+		field: "Concept",
+		title: "Concept"
+	}, {
+		field: "Type",
+		title: "Type"
+	}, {
+		field: "Action",
+		title: "Action"
+	},
+	{
+		field: "DateTime",
+		title: "Date / Time"
+	}
+	],
+	dataBinding: function(e) {
+			var $pagerRefresh = $('.k-pager-refresh').clone();
+			var $grid = $('#mytask-grid.summary');
+			$('.k-pager-refresh').remove();
+			$grid.find('.k-grid-header tr th:first-child').prepend($pagerRefresh);
+
+			$grid.find('.k-pager-wrap').wrapInner('<div class="k-pager-innerwrap"></div>');
+
+			$grid.on('click','.scheck',function(){
+				if( this.checked ){
+					$(this).closest('tr').addClass('active');
+					$('.approval-buttons').addClass('active');
+				} else {
+					$(this).closest('tr').removeClass('active');
+					if( $('.scheck:checked').length == 0 ) {
+						$('.approval-buttons').removeClass('active');
+					}
+				}
+			});
+	}
+};
+});
+
+
+grid.controller("conflictsGridCtrl", function($scope){
+	$scope.mainGridOptions = {
+		dataSource: [ 
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						},
+						{ 
+							taskId: "1234",
+							Event: "Event Info Here",
+							description:"Description Info Here",
+							originator: "Originator Name",
+							type: "Item Create",
+							conflicts:"Conflicts",
+							dateTime: "01/10/2015 8:50AM"
+						}
+					],
+		height: 180,
+		sortable: true,
+		selectable: "row",
+		scrollable: false,
+		columnMenu: {
+			columns: false,
+			sortable: true
+		},
+		filterable: {
+			extra: false,
+			mode: "menu"
+        },
+		pageable: {
+			refresh: true,
+			pageSizes: true,
+			buttonCount: 2,
+			pageSize: 10,
+			info: true,
+			messages: {
+			  display: " {10}"
+			}
+		},
+		dataBound: function() {
+			this.expandRow(this.tbody.find("tr.k-master-row").first());
+		},
+		columns: [
+		{
+			field: "taskId",
+			title: "Task ID",
+			width: 200
+		}, {
+			field: "Event",
+			title: "Event"
+		}, 
+		{
+			field: "description",
+			title: "Description"
+		},
+		{
+			field: "originator",
+			title: "Originator"
+		},  
+		{
+			field: "type",
+			title: "Type"
+		}, 
+		{
+			field: "conflicts",
+			title: "Conflicts"
+		},
+		{
+			field: "dateTime",
+			title: "Date / Time"
+		}],
+		dataBinding: function(e) {
+				var $pagerRefresh = $('.k-pager-refresh').clone();
+				var $grid = $('#mytask-grid.mytask');
+				//$('.k-pager-refresh').remove();
+				$grid.find('.k-grid-header tr th:first-child').prepend($pagerRefresh);
+
+				$grid.find('.k-pager-wrap').wrapInner('<div class="k-pager-innerwrap"></div>');
+
+				$grid.on('click','.scheck',function(){
+					if( this.checked ){
+						$(this).closest('tr').addClass('active');
+						$('.approval-buttons .approve').addClass('active');
+					} else {
+						$(this).closest('tr').removeClass('active');
+						if( $('.scheck:checked').length == 0 ) {
+							$('.approval-buttons .approve').removeClass('active');
+						}
+					}
+				})
+				
+				$grid.on('click','.comment-btn',function(){		
+					$('.commentbox,.sm-overlay').show();
+					$('.sm-overlay,.sum-lightbox .buttons button').click(function(){
+						$('.commentbox,.sm-overlay').hide()
+					})
+				});
+		}
+	};
+
+	
+});
+$(document).ready(function(){
+	$("#select-type").on('change', function(){
+		if($(this).val() == "Item Create"){
+			$("#mytask-grid .filter-by ul").css('display','inline-block');
+		}else if($(this).val() == "Select Type"){
+			$("#mytask-grid .filter-by ul").hide();
+		}
+	});
+
+	$("#mytask-grid").on('click', 'i.fa-caret-down', function(){
+		$(".item-create-dropdown").hide();
+		$(this).siblings(".item-create-dropdown").show();
+	});
+	$('.summaryCont.ng-scope').hide();
 	$('.sd-block.complete').click(function(){
 		$('.summaryCont.ng-scope').hide();
 	});
@@ -8,55 +565,211 @@ $('.summaryCont.ng-scope').hide();
 	$('.sd-block mytask').click(function(){
 		$('.summaryCont.ng-scope').hide();
 	});
-.faq dt:before {
-  content: counter(my-counter);
-  counter-increment: my-counter;
-  position: absolute;
-  left: 0;
-  top: 0;
-  font: bold 20px/1 Sans-Serif;
-  color: #fff;
-  background-color: #bfdfff;
-  width: 3%;
-  height: 40px;
-  text-align: center;
-  padding-top: 32px;
-}
-
-.faq dd {
-  padding: 0 0 23px 0;
-  font-size: 12px;
-  color: #333;
-  padding-left: 55px;
-} 
-
-.faq dd:last-child{
-  border-bottom: 1px solid #f3f3f3;
-}
-
-.editIcons{
-  float: left;
-  width: 5%;
-  margin-top: 14px;
-}
-
-.editIcons .fa{
-  width: 80%;
-  padding-top: 30px;
-  background-color: #d7ebfe;
-  text-align: center;
-  height: 36px;
-  margin-bottom: 5px;
-}
-
-#mytask-grid .k-grid .editIcons .fa.active{
-  background-color: #007dc6;
-  color: #fff;
-}
-( "#mytask-grid").on('mouseenter','.k-grid .commentSection .left-tab-icons .tab',function() {
+	$( "#mytask-grid").on('mouseenter','.k-grid .commentSection .left-tab-icons .tab',function() {
 	  $(this).find('.extraText').show();
 	});
 
 	$( "#mytask-grid").on('mouseleave','.k-grid .commentSection .left-tab-icons .tab',function() {
 	  $(this).find('.extraText').hide();
 	});
+});
+
+	/* summary ctrl */
+grid.controller("summaryGridCtrl", function($scope){
+$scope.mainGridOptions = {
+	dataSource: [ 
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 DateTime: "01/10/2015 8:50AM",
+				 Status:"In Progress"
+				},
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Product Create",
+				 DateTime: "01/10/2015 8:50AM",
+				 Status:"In Progress"
+				},
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Maintenance",
+				 DateTime: "01/10/2015 8:50AM",
+				 Status:"In Progress"
+				},
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 DateTime: "01/10/2015 8:50AM",
+				 Status:"In Progress"
+				},
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Product Create",
+				 DateTime: "01/10/2015 8:50AM",
+				 Status:"In Progress"
+				},
+				{ taskId: "12345",
+				 Description: "Description Info Here",
+				 Originator: "Originator Name",
+				 Concept: "Offer",
+				 Type: "Item Create",
+				 DateTime: "01/10/2015 8:50AM",
+				 Status:"In Progress"
+				}],
+	height: 180,
+	sortable: true,
+	selectable: "row",
+	scrollable: false,
+	columnMenu: {
+		columns: false
+	},
+	filterable: {
+		extra: false
+    },
+	pageable: {
+		refresh: true,
+			pageSizes: true,
+			buttonCount: 2,
+			pageSize: 10,
+			info: true,
+			messages: {
+			  display: " {10}"
+			}
+	},
+	dataBound: function() {
+		this.expandRow(this.tbody.find("tr.k-master-row"));
+	},
+	columns: [
+	{
+		field: "taskId",
+		title: "Task ID",
+		width: 200
+	}, {
+		field: "Description",
+		title: "Description"
+	}, {
+		field: "Originator",
+		title: "Originator"
+	},  {
+		field: "Concept",
+		title: "Concept"
+	}, {
+		field: "Type",
+		title: "Type"
+	}, {
+		field: "DateTime",
+		title: "Date / Time"
+	},{
+		field: "Status",
+		title: "Status"
+	},
+	],
+	dataBinding: function(e) {
+			var $pagerRefresh = $('.k-pager-refresh').clone();
+			var $grid = $('#mytask-grid.summary');
+			$('.k-pager-refresh').remove();
+			$grid.find('.k-grid-header tr th:first-child').prepend($pagerRefresh);
+
+			$grid.find('.k-pager-wrap').wrapInner('<div class="k-pager-innerwrap"></div>');
+
+			$grid.on('click','.scheck',function(){
+				if( this.checked ){
+					$(this).closest('tr').addClass('active');
+					$('.approval-buttons').addClass('active');
+				} else {
+					$(this).closest('tr').removeClass('active');
+					if( $('.scheck:checked').length == 0 ) {
+						$('.approval-buttons').removeClass('active');
+					}
+				}
+			});
+	}
+};
+});
+
+
+
+function onFilterMenuInit(e) {
+        if (e.field == "Event") {
+          initCheckboxFilter.call(this, e);
+        }
+      }
+
+      function initCheckboxFilter(e) {
+        var popup = e.container.data("kendoPopup");
+        var dataSource = this.dataSource;
+        var field = e.field;
+        var checkboxesDataSource = new kendo.data.DataSource({
+          data: uniqueForField(dataSource.data(), field)
+        });
+
+        var helpTextElement = e.container.children(":first").children(":last").find('.k-textbox');
+		e.container.children(":first").children(":last").find('.k-dropdown').hide();		
+		$('<span style="width: 100%;" class="k-textbox k-space-right"></span>').insertAfter(e.container.children(":first").children(":last").find('.k-filter-help-text'))		
+		e.container.children(":first").children(":last").find("span.k-space-right").append('<a class="k-icon k-i-search" href="#">&nbsp;</a>');
+		e.container.children(":first").children(":last").find("span.k-space-right").append(e.container.children(":first").children(":last").find('.k-textbox'));		
+		e.container.children(":first").children(":last").find(".k-button.k-primary").text("OK");
+        //helpTextElement.nextUntil(":has(.k-button)").remove();
+        var element = $("<div class='checkbox-ontainer'></div>").insertAfter(helpTextElement.parent()).kendoListView({
+          dataSource: checkboxesDataSource,
+          template: "<div class='ChkCustomdiv'><input type='checkbox' value='#:" + field + "#'/><span class='ChkSpan'>#:" + field + "#</span></div>"
+        });
+        e.container.find("[type='submit']").click(function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          var filter = dataSource.filter() || { logic: "and", filters: [] };
+          var fieldFilters = $.map(element.find(":checkbox:checked"), function (input) {            
+            return {
+              field: field,
+              operator: "eq",
+              value: input.value
+            };
+          });
+          if (fieldFilters.length) {
+            //removeFiltersForField(filter, field);
+            filter.filters.push({
+              logic: "or",
+              filters: fieldFilters
+            });
+            dataSource.filter(filter);
+          }
+          popup.close();
+        });
+      }
+
+      function removeFiltersForField(expression, field) {
+        if (expression.filters) {
+          expression.filters = $.grep(expression.filters, function (filter) {
+            removeFiltersForField(filter, field);
+            if (filter.filters) {
+              return filter.filters.length;
+            } else {
+              return filter.field != field;
+            }
+          });
+        }
+      }
+
+      function uniqueForField(data, field) {
+        var map = {};
+        var result = [];
+        var item;
+        for (var i = 0; i < data.length; i++) {
+          item = data[i];
+          if (!map[item[field]]) {
+            result.push(item.toJSON());
+            map[item[field]] = true;
+          }
+        }
+        return result;
+      }
