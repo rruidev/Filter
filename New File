@@ -53,3 +53,10 @@ $('.summaryCont.ng-scope').hide();
   background-color: #007dc6;
   color: #fff;
 }
+( "#mytask-grid").on('mouseenter','.k-grid .commentSection .left-tab-icons .tab',function() {
+	  $(this).find('.extraText').show();
+	});
+
+	$( "#mytask-grid").on('mouseleave','.k-grid .commentSection .left-tab-icons .tab',function() {
+	  $(this).find('.extraText').hide();
+	});
