@@ -1,6 +1,32 @@
  document.getElementsByClassName("search")[0].onclick = function(){
-    this.nextSibling.style.display='block';
+    //this.nextSibling.style.display='block';
     //$(this).next("form").fadeToggle();
+     toggleClass(this,'active')
+     toggleClass('.right-inner-addon','active');
+     removeClass(".hm-lg", "active");
+     removeClass(".dsh-brd", "active");
+    }
+  document.getElementsByClassName("startemi")[0].onclick = function(){
+    //this.nextSibling.style.display='block';
+    //$(this).next("form").fadeToggle();
+     toggleClass('.emistart','active')
+     //toggleClass('.right-inner-addon','active');
+     //removeClass(".hm-lg", "active");
+     //removeClass(".dsh-brd", "active");
+    }
+  document.getElementsByClassName("readmoreemi")[0].onclick = function(){
+    //this.nextSibling.style.display='block';
+    //$(this).next("form").fadeToggle();
+     hideElement(".slider");
+     hideElement(".blocks");
+     hideElement(".options");
+     hideElement(".dashbrd-cont");
+     hideElement(".tips-cont");
+     showElement(".readmore-cont");
+      addClass(".tigger", "open");
+     //toggleClass('.right-inner-addon','active');
+     //removeClass(".hm-lg", "active");
+     //removeClass(".dsh-brd", "active");
     }
 document.getElementsByClassName('tip-ck')[0].onclick = function(){
 		 addClass(".tip-hm", "active");
