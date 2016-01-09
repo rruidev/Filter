@@ -828,7 +828,7 @@ height:327px;
 .sidebarlft ul li a:hover {
 	text-decoration:none;
 	}
-.sidebarlft ul li a i {
+.sidebarlft ul li a i:first-child {
     position: absolute;
     display: block;
     height: 70px;
@@ -840,6 +840,13 @@ height:327px;
     background: #97b4fe;
     color: #004c91;
     border-right: 1px solid rgba(255, 255, 255, 0.1)
+}
+.sidebarlft ul li a i:nth-child(2) {
+    position: absolute;
+    right: 40px;
+    text-align: center;
+    color: #004c91;
+    line-height: 70px;
 }
  
 .wrapper.sidebarlftin {
@@ -2742,4 +2749,65 @@ margin: 50px auto 0;
     clip: rect(0, 100px, 200px, 0);
     background: #76c043;
     transform: rotate(60deg);
+}
+/* New changes */
+.right-inner-addon{display:none;}
+.slider .right-inner-addon.active {
+    position: relative;
+    display:block;
+    margin-top: -60px;
+    padding: 5px 10px;
+    background: #007dc4;
+    border-bottom: 2px solid yellow;
+}
+.dashbrd-cont .right-inner-addon.active {
+    position: relative;
+    display:block;
+    margin-top: -15px;
+    padding: 5px 10px;
+    background: #007dc4;
+    border-bottom: 2px solid yellow;
+}
+.right-inner-addon input {
+    padding-right: 30px;    
+}
+.right-inner-addon i {
+    position: absolute;
+    right: 10px;
+    padding: 10px 12px;
+    pointer-events: none;
+}
+.settings .search.active .hm-op {
+    background: yellow;
+    opacity: 0.3;
+    height: 70px;
+    width: 50px;
+    position: absolute;
+    left: 0;
+}
+.settings .search.active .hz-bar {
+    display: block;
+    z-index: 999;
+    bottom: -10px;
+    width:50px;
+    background:yellow;
+}
+.sidebarlft ul li.emistart{
+    display: none;
+}
+.sidebarlft ul li.emistart.active{
+    display: block;
+}
+.readmore-cont{
+    display:none;
+}
+.sidebarlft ul li.emistart li{
+    border: 0;
+    list-style-type: disc;
+    padding: 0 0 0 30px;
+    list-style-position: inside;
+    display: list-item;
+    background:#004c91;
+    border-bottom: 1px solid #fff;
+    color: #fff
 }
