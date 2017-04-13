@@ -1,0 +1,6 @@
+[
+	{"product_id": "E201C5", "product_name": "Mens T-shirt", "product_desc": "This is mens T Shirt", "image_path":"../images/products/product1.jpg", "product_orig_price": "75", "product_sale_proce": "52"},
+	{"product_id": "E401C6", "product_name": "Women Dress", "product_desc": "This is Women Dress", "image_path":"../images/products/product2.jpg", "product_orig_price": "195", "product_sale_proce": "99.99"},
+	{"product_id": "E501C0", "product_name": "Mens Shirt", "product_desc": "This is Mens Shirt", "image_path":"../images/products/product3.jpg", "product_orig_price": "100", "product_sale_proce": "69"},
+	{"product_id": "E801C5", "product_name": "Mens Pant", "product_desc": "This is Mens Pant", "image_path":"../images/products/product4.jpg", "product_orig_price": "150", "product_sale_proce": "90"}
+]
